@@ -16,7 +16,7 @@ UINavigationControllerDelegate  {
     @IBOutlet weak var cameraButton: UIBarButtonItem!
     @IBOutlet weak var PickButton: UIBarButtonItem!
     @IBOutlet weak var ShareButton: UIBarButtonItem!
-    
+    //1
     var count = 0
     @IBOutlet var label: UILabel!
     override func viewDidLoad() {
