@@ -77,10 +77,10 @@ UINavigationControllerDelegate  {
     }
     
     
-    func getKeyboardHeight(_ notification:Notification){
+    func getKeyboardHeight(_ notification:Notification) ->CGFloat{
         let userInfo = notification.userInfo
-        let keyboardSize = userInfo![UIkeyboardFrameEndUserInfoKey] as! NSValue
-        return keyboardSize.chRectValue.height
+        let keyboardSize = userInfo![UIResponder.keyboardFrameEndUserInfoKey] as! NSValue // of CGRect
+        return keyboardSize.cgRectValue.height
     }
     
     func subscribeToKeyboardNotifications(){
@@ -90,6 +90,24 @@ UINavigationControllerDelegate  {
     func unsubscribeFromKeyboardNotifications(){
         NotificationCenter.default.removeObserver(self, name: .UIKeyboardWillShow, object: nil)
     }
-
+    func generateMemedImage() -> UIImage {
+        
+        // TODO: Hide toolbar and navbar
+        
+        // Render view to an image
+        UIGraphicsBeginImageContext(self.view.frame.size)
+        view.drawHierarchy(in: self.view.frame, afterScreenUpdates: true)
+        let memedImage:UIImage = UIGraphicsGetImageFromCurrentImageContext()!
+        UIGraphicsEndImageContext()
+        
+        // TODO: Show toolbar and navbar
+        
+        return memedImage
+    }
+    
+    func save() {
+        // Create the meme
+        let meme = Meme(topText: topTextField.text!, bottomText: bottomTextField.text!, originalImage: imageView.image!, memedImage: memedImage)
+    }
 }
 
