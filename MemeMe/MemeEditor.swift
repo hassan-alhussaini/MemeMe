@@ -107,10 +107,10 @@ UINavigationControllerDelegate  {
     
     func save() {
         // Create the meme
-        let topText = (topTextField.text == "TOP") ? "" : topTextField.text ?? ""
-        let bottomText = (bottomTextField.text == "BUTTOM") ? "" : bottomTextField.text ?? ""
-        guard let image = imageView.image else {return}
-        let meme = Meme(topText: topTextField.text!, bottomText: bottomTextField.text!, originalImage: imageView.image!, memedImage: generateMemedImage())
+        _ = (topTextField.text == "TOP") ? "" : topTextField.text ?? ""
+        _ = (bottomTextField.text == "BUTTOM") ? "" : bottomTextField.text ?? ""
+        guard imageView.image != nil else {return}
+        _ = Meme(topText: topTextField.text!, bottomText: bottomTextField.text!, originalImage: imageView.image!, memedImage: generateMemedImage())
     }
     
     override var prefersStatusBarHidden: Bool {
@@ -125,7 +125,7 @@ UINavigationControllerDelegate  {
         controller.completionWithItemsHandler = {(activityType: UIActivity.ActivityType, completed: Bool, returnItems:[Any]?, error:NSError?) in
             
             if(!completed){return}
-            self.save(memedImage: memedImage)
+            self.save()
         } as? UIActivityViewController.CompletionWithItemsHandler
     }
 }
