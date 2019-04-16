@@ -46,20 +46,14 @@ UINavigationControllerDelegate  {
         navigationItem.leftBarButtonItem?.isEnabled = false
     }
     
-    @IBAction func picklAnImageFromAlbum(_ sender: Any) {
-        let imagePicker = UIImagePickerController()
-        imagePicker.delegate = self
-        imagePicker.sourceType = .photoLibrary
-        present(imagePicker, animated: true, completion: nil)
+    @IBAction func pickAnImage(sourceType: UIImagePickerController.SourceType){
+        let imagePickerController = UIImagePickerController()
+        imagePickerController.delegate = self
+        imagePickerController.sourceType = sourceType
+        present(imagePickerController, animated: true, completion: nil)
     }
     
-    @IBAction func pickAnImageFromCamera(_ sender: Any){
-        let imagePicker = UIImagePickerController()
-        imagePicker.delegate = self
-        present(imagePicker, animated: true, completion: nil)
-    }
-    
-    func textFieldDidBeginEditing(){
+    func textFieldDidBeginEditing(_ textField: UITextField){
         
     }
     
@@ -73,7 +67,9 @@ UINavigationControllerDelegate  {
         navigationItem.leftBarButtonItem?.isEnabled = (image != nil)
     }
     @objc func keyboardWillShow(_ notification:Notification){
+        if bottomTextField.isFirstResponder {
         view.frame.origin.y = -getKeyboardHeight(notification)
+        }
     }
     
     func getKeyboardHeight(_ notification:Notification) ->CGFloat{

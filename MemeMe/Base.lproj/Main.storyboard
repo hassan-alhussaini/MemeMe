@@ -40,7 +40,7 @@
                                 <items>
                                     <barButtonItem title="Pick" id="dJF-X0-DjY">
                                         <connections>
-                                            <action selector="picklAnImageFromAlbum:" destination="BYZ-38-t0r" id="Y3N-zi-kgI"/>
+                                            <action selector="pickAnImageWithSourceType:" destination="BYZ-38-t0r" id="jxV-ST-TgF"/>
                                         </connections>
                                     </barButtonItem>
                                     <barButtonItem style="plain" systemItem="flexibleSpace" id="WSf-nY-bEw"/>
