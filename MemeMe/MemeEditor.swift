@@ -45,12 +45,15 @@ UINavigationControllerDelegate  {
         navigationItem.leftBarButtonItem =  UIBarButtonItem(barButtonSystemItem: .action, target: self, action: #selector(shareMemedImage))
         navigationItem.leftBarButtonItem?.isEnabled = false
     }
-    
-    @IBAction func pickAnImage(sourceType: UIImagePickerController.SourceType){
+    func OpenImagePicker(sourceType: UIImagePickerController.SourceType){
         let imagePickerController = UIImagePickerController()
         imagePickerController.delegate = self
         imagePickerController.sourceType = sourceType
         present(imagePickerController, animated: true, completion: nil)
+    }
+    @IBAction func pickAnImage(_ sender: UIBarButtonItem){
+        OpenImagePicker(sourceType: .camera)
+        OpenImagePicker(sourceType: .photoLibrary)
     }
     
     func textFieldDidBeginEditing(_ textField: UITextField){
@@ -66,10 +69,15 @@ UINavigationControllerDelegate  {
         imageView.image = image
         navigationItem.leftBarButtonItem?.isEnabled = (image != nil)
     }
+    
     @objc func keyboardWillShow(_ notification:Notification){
         if bottomTextField.isFirstResponder {
         view.frame.origin.y = -getKeyboardHeight(notification)
         }
+    }
+    
+    @objc func keyboardWillHide(_ notification:Notification){
+            view.frame.origin.y = 0
     }
     
     func getKeyboardHeight(_ notification:Notification) ->CGFloat{
