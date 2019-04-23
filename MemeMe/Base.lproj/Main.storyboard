@@ -13,7 +13,6 @@
         <!--Meme Editor-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
                 <viewController id="BYZ-38-t0r" customClass="MemeEditor" customModule="MemeMe" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="896" height="414"/>
@@ -29,7 +28,7 @@
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Bottom" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="cNN-Pa-qjl" userLabel="BottomTextField">
-                                <rect key="frame" x="60" y="226" width="836" height="44"/>
+                                <rect key="frame" x="60" y="231" width="836" height="44"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="44" id="QQs-Yg-OPT"/>
                                 </constraints>
@@ -37,15 +36,21 @@
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" horizontalHuggingPriority="240" translatesAutoresizingMaskIntoConstraints="NO" id="zjC-iO-CKo">
-                                <rect key="frame" x="0.0" y="300" width="896" height="49"/>
+                                <rect key="frame" x="0.0" y="305" width="896" height="44"/>
                                 <items>
-                                    <barButtonItem title="Pick" id="dJF-X0-DjY"/>
+                                    <barButtonItem tag="2" title="Pick" id="dJF-X0-DjY"/>
                                     <barButtonItem style="plain" systemItem="flexibleSpace" id="WSf-nY-bEw"/>
-                                    <barButtonItem title="Camera" id="b0b-48-XKS"/>
+                                    <barButtonItem tag="1" title="Camera" id="b0b-48-XKS">
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="camera">
+                                                <integer key="value" value="1"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                    </barButtonItem>
                                 </items>
                             </toolbar>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="zCR-5I-kZE" userLabel="UIImagePicker">
-                                <rect key="frame" x="0.0" y="44" width="896" height="256"/>
+                                <rect key="frame" x="0.0" y="44" width="896" height="261"/>
                             </imageView>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -84,6 +89,7 @@
                         <outlet property="topTextField" destination="KW4-EI-AIS" id="WNE-Bf-gH6"/>
                     </connections>
                 </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2192.753623188406" y="-377.00892857142856"/>
         </scene>

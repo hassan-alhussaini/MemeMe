@@ -45,6 +45,19 @@ UINavigationControllerDelegate  {
         navigationItem.leftBarButtonItem =  UIBarButtonItem(barButtonSystemItem: .action, target: self, action: #selector(shareMemedImage))
         navigationItem.leftBarButtonItem?.isEnabled = false
     }
+    
+    func configureTextField(_ textField: UITextField, text: String) {
+        textField.text = text
+        textField.textAlignment = .center
+        textField.delegate = (self as! UITextFieldDelegate)
+        textField.defaultTextAttributes = [
+            .font: UIFont(name: "HelveticaNeue-condesedBlack", size: 40)!,
+            .foregroundColor: UIColor.white,
+            .strokeColor: UIColor .black,
+            .strokeWidth: -8.0
+        ]
+    }
+    
     func OpenImagePicker(sourceType: UIImagePickerController.SourceType){
         let imagePickerController = UIImagePickerController()
         imagePickerController.delegate = self
@@ -52,8 +65,11 @@ UINavigationControllerDelegate  {
         present(imagePickerController, animated: true, completion: nil)
     }
     @IBAction func pickAnImage(_ sender: UIBarButtonItem){
+        if sender.tag == 1{
         OpenImagePicker(sourceType: .camera)
+        } else {
         OpenImagePicker(sourceType: .photoLibrary)
+        }
     }
     
     func textFieldDidBeginEditing(_ textField: UITextField){
@@ -87,7 +103,7 @@ UINavigationControllerDelegate  {
     }
     
     func subscribeToKeyboardNotifications(){
-        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow(_:)), name: UIResponder.keyboardWillShowNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow(_:)), name: UIResponder.keyboardWillHideNotification, object: nil)
     }
     
     func unsubscribeFromKeyboardNotifications(){
